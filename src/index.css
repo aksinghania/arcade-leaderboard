@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Arcade";
+  src: url("./assets/fonts/arcade.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sub";
+  src: url("./assets/fonts/sub.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.arcade-title {
+  font-family: "Arcade", sans-serif;
+}
+.sub-font {
+  font-family: "Sub", sans-serif;
+}
