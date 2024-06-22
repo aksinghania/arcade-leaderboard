@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://aksinghania.github.io/arcade-leaderboard",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
