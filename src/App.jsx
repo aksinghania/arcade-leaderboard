@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { ThemeProvider } from 'theme-ui';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import theme from './theme';
 
 const users = [
@@ -10,17 +12,31 @@ const users = [
 
 const Leaderboard = () => {
   const maxTickets = Math.max(...users.map(user => user.tickets));
+  const barsRef = useRef([]);
+
+  useEffect(() => {
+    barsRef.current.forEach((bar, index) => {
+      gsap.fromTo(bar, 
+        { width: '0%' }, 
+        { 
+          width: `${(users[index].tickets / maxTickets) * 100}%`, 
+          duration: 1.5, 
+          ease: 'power3.out' 
+        }
+      );
+    });
+  }, [maxTickets]);
 
   return (
     <div sx={{ variant: 'styles.root', p: 4 }}>
       <h1 className="arcade-title" sx={{ variant: 'text.title', mb: 4 }}>Arcade Leaderboard</h1>
-      {users.map(user => (
+      {users.map((user, index) => (
         <div key={user.name} sx={{ my: 3, display: 'flex', alignItems: 'center' }}>
-          <h2 className='sub-font' sx={{ variant: 'text.title',fontSize:"2.8rem", width: '150px', mr: 3 }}>{user.name}</h2>
-          <div sx={{ flexGrow: 1, bg: 'muted', borderRadius: 'default', position: 'relative', height: '40px' }}>
+          <h2 sx={{ variant: 'text.headline', width: '150px', mr: 3 }}>{user.name}</h2>
+          <div sx={{ flexGrow: 1, bg: 'muted', borderRadius: 'default', position: 'relative', height: '48px' }}>
             <div
+              ref={el => barsRef.current[index] = el}
               sx={{
-                width: `${(user.tickets / maxTickets) * 100}%`,
                 bg: 'primary',
                 height: '100%',
                 borderRadius: 'default',
