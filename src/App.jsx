@@ -5,13 +5,20 @@ import { gsap } from 'gsap';
 import theme from './theme';
 
 const initialUsers = [
-  { name: 'Charlie', tickets: 40 },
-  { name: 'Alice', tickets: 30 },
-  { name: 'Bob', tickets: 20 },
+  { name: "Charlie", tickets: 40 },
+  { name: "Alice", tickets: 30 },
+  { name: "Bob", tickets: 20 },
+  { name: "Dave", tickets: 15 },
+  { name: "Eve", tickets: 10 },
+  { name: "Frank", tickets: 5 },
+  { name: "Grace", tickets: 50 },
+  { name: "Hank", tickets: 25 },
+  { name: "Ivy", tickets: 35 },
+  { name: "Jack", tickets: 45 },
 ];
 
 const Leaderboard = () => {
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState(initialUsers.sort((a, b) => b.tickets - a.tickets));
   
   const listRef = useRef();
 
@@ -29,7 +36,7 @@ const Leaderboard = () => {
 
     const animatePositions = () => {
       listItems.forEach((item, index) => {
-        gsap.to(item, { y: index * 60, duration: 1.5, ease: 'power3.out' });
+        gsap.to(item, { y: index * 5, duration: 1.5, ease: 'power3.out' });
       });
     };
 
@@ -50,9 +57,9 @@ const Leaderboard = () => {
       <h1 className="arcade-title" sx={{ variant: 'text.title', mb: 4 }}>Arcade Leaderboard</h1>
       <div ref={listRef}>
         {users.map((user,index) => (
-          <div key={user.name} sx={{ my: 3, display: 'flex', alignItems: 'center', position: 'relative' }}>
-            <h2 sx={{ variant: 'text.headline', width: '150px', mr: 3 }}><span sx={{ variant: 'text.eyebrow'}}>{index+1}. </span> {user.name}</h2>
-            <div sx={{ flexGrow: 1, bg: 'muted', borderRadius: 'default', position: 'relative', height: '48px' }}>
+          <div key={user.name} sx={{ my: -3, display: 'flex', alignItems: 'center', position: 'relative' }}>
+            <h2 sx={{ variant: 'text.headline', width: '150px', mr: 3 , fontSize:4}}><span sx={{ variant: 'text.eyebrow',fontSize:4}}>{index+1}. </span> {user.name}</h2>
+            <div sx={{ flexGrow: 1, bg: 'muted', borderRadius: 'default', position: 'relative', height: '40px' }}>
               <div
                 className="progress-bar"
                 sx={{
