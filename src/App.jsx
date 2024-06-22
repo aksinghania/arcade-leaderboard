@@ -30,8 +30,8 @@ const Leaderboard = () => {
       const ticketCount = item.querySelector('.ticket-count');
       gsap.fromTo(
         progressBar,
-        { width: '0%' },
-        { width: `${(users[index].tickets / maxTickets) * 100}%`, duration: 1.5, ease: 'power3.out' }
+        { width: '5%' },
+        { width: `${(users[index].tickets / maxTickets) * 100}%`, duration: 1, ease: 'power3.in' }
       );
 
       gsap.fromTo(
@@ -39,8 +39,8 @@ const Leaderboard = () => {
         { innerText: 0 },
         {
           innerText: users[index].tickets,
-          duration: 2,
-          ease: 'power3.out',
+          duration: 1.5,
+          ease: 'power3.in',
           snap: { innerText: 1 },
           onUpdate: function () {
             ticketCount.textContent = `${Math.round(ticketCount.innerText)} 🎟`;
