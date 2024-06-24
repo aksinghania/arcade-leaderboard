@@ -110,8 +110,10 @@ const Leaderboard = () => {
             sx={{
               my: -3,
               display: "flex",
+              flexWrap: "wrap",
               alignItems: "center",
               position: "relative",
+              marginBottom: 30,
             }}
           >
             <h2
@@ -134,6 +136,7 @@ const Leaderboard = () => {
                 borderRadius: "default",
                 position: "relative",
                 height: "40px",
+                minWidth: "200px",
               }}
             >
               <div
