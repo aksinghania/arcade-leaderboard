@@ -16,6 +16,7 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 router.use('/emojis', emojis);
 
 // /api/v1/stats/U0217R0029Z
+// https://arcade-leaderboard-kr5n0x8n2-akshatsinghanias-projects-a4067bab.vercel.app/api/v1/stats/U0217R0029Z
 router.get('/stats/:username', async (req, res) => {
   const username = req.params.username;
   const url = `https://hackhour.hackclub.com/api/stats/${username}`;
