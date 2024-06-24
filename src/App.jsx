@@ -11,6 +11,7 @@ const Ids = [
     id: "U0217R0029Z",
   },
   { username: "s8ul", id: "U04AQNZRJQ5" },
+  { username: "Mehul", id: "U06DMH2GHC7" },
 ];
 
 const Leaderboard = () => {
